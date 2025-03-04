@@ -1,0 +1,170 @@
+Module 1: User Management and Authentication
+Welcome Page
+--- Functionality: Displays the app's title and a brief description.
+--- Action: Users explore interactive mouse elements and navigate to Login, Registration, or Credits & Resources pages.
+--- Purpose: Engages users and introduces the platform.
+
+Login Page
+--- Functionality: Users log in using a username and password.
+--- Action: The system verifies the credentials and grants access to the user dashboard.
+--- Purpose: Provides secure access for registered users.
+
+Registration Page
+--- Functionality: Allows new users to create an account.
+--- Action: Users submit a form with their username, email, password (with confirmation), and date of birth.
+--- Purpose: Onboards new users to the platform securely.
+
+Logout Feature
+--- Functionality: Ends the user’s session securely.
+--- Action: Clicking the logout button redirects users to the Welcome page.
+--- Purpose: Ensures sessions are closed properly for security.
+
+Module 2: Social Collaboration and Profile Sharing
+Profile Sharing
+--- Functionality: Users can grant access to their profile to other students.
+--- Action: A student sends an authorization request to another, which can be accepted or rejected.
+--- Purpose: Encourages collaboration by allowing shared progress.
+
+Synchronized Collaboration
+--- Functionality: Multiple users can work together on lessons and coding exercises in real-time.
+--- Action: Users collaborate on the same document with live updates.
+--- Purpose: Simulates real-world collaboration and enhances learning.
+
+Progress Contribution by Peers
+--- Functionality: Shared users can make progress on each other’s accounts.
+--- Action: Contributions are logged to track changes.
+--- Purpose: Reinforces teamwork and accelerates learning.
+
+Module 3: Course Content and Progress Tracking
+Lesson Pages
+--- Functionality: Provide explanations, examples, and tutorials on HTML, CSS, and JavaScript topics.
+--- Action: Users access lesson content, which includes documentation and examples.
+--- Purpose: Builds foundational knowledge of web development.
+
+Multiple-Choice Questions
+--- Functionality: Assess understanding with short quizzes.
+--- Action: Users answer questions, receiving immediate feedback.
+--- Purpose: Reinforces concepts and identifies areas for improvement.
+
+Coding Projects and Exercises
+--- Functionality: Offer hands-on challenges for users to apply their knowledge.
+--- Action: Users solve coding tasks directly in the web interface.
+--- Purpose: Strengthens coding skills through practice.
+
+Progress Tracking
+--- Functionality: Displays user progress for lessons and projects.
+--- Action: Progress bars visually represent completion status.
+--- Purpose: Motivates students by showing progress and remaining tasks.
+
+Module 4: Credits, Resources, and Information
+Credits & Resources Page
+--- Functionality: Lists contributors, instructors, and TAs, along with external references.
+--- Action: Users can view acknowledgments and citations.
+--- Purpose: Provides transparency and acknowledges contributions.
+Module 5: Communication and Notifications (Optional Enhancement)
+Messaging System
+--- Functionality: Users can send messages to other students.
+--- Action: Messages are stored and retrievable for future reference.
+--- Purpose: Facilitates communication between collaborators.
+
+Notifications
+--- Functionality: Alerts users about collaboration requests and progress updates.
+--- Action: Notifications appear in the interface when relevant events occur.
+--- Purpose: Keeps users informed and engaged.
+
+Module 6: Backend and Cloud Infrastructure
+AJAX-based Updates
+--- Functionality: Enables smooth updates without page reloads.
+--- Action: AJAX requests send and retrieve data asynchronously.
+--- Purpose: Enhances user experience by improving responsiveness.
+
+Cloud Deployment
+--- Functionality: Hosts the web app on a cloud platform.
+--- Action: Users access the app from any location via the internet.
+--- Purpose: Ensures scalability, availability, and reliability.
+
+Data Models and Storage
+--- Functionality: Manages user data, lesson content, and collaborative sessions.
+--- Action: Uses relational databases to store and retrieve data securely.
+--- Purpose: Ensures data integrity and supports app functionality.
+
+Tasks and Team Member Allocation:
+
+Itamar Hindi (ihindi):
+  
+Frontend Development: Main Pages Layout & Styling
+Create the HTML structure and CSS for the following pages:
+  
+  Welcome Page
+    Links to Login, Registration, and Credits & Resources pages
+  Login Page
+    Form fields for username and password
+    Styled to extend from a shared base template with Welcome Page
+  Registration Page
+    Form fields for username, email, password (with confirmation), and date of birth
+    Consistent design with the rest of the site
+    Ensure mobile responsiveness for the pages (basic media queries).
+  
+  Expected Deliverables:
+  
+  All 3 pages styled with consistent themes.
+  Navigation working between the pages (Welcome → Login/Registration).
+  Interactive elements working on the Welcome Page (e.g., hover effects).
+
+Andre Silva asilva:
+  
+Backend Development: User Authentication and Data Models
+  Django Models Setup:
+    Create models for User with fields for username, email, password, and date of birth.
+  Authentication Logic:
+    Implement registration logic (save user data to the database).
+    Implement login/logout logic using Django sessions.
+  Expected Deliverables:
+    Functional registration and login system.
+    User data stored securely in the database.
+    Logout button working on the Post-Welcome Page.
+Mario Cruz macruz:
+
+Post-Welcome Page (Dashboard) & Credits Page
+  Dashboard Setup:
+    Create the Post-Welcome Page with:
+  List of other students (static placeholders for now).
+    Progress bars next to each sample lesson (static for now).
+    Logout button at the top.
+  Credits & Resources Page:
+    List team members, instructors, and TAs involved in the project.
+    Add sample citations and resources section.
+  Expected Deliverables:
+    Functional dashboard with lesson progress bars (static).
+    Logout button working and redirecting to the Welcome Page.
+    Credits & Resources page with styled content.
+
+
+
+from django.db import models
+
+class User(models.Model):
+    username = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=100)
+    date_of_birth = models.DateField()
+    shared_profiles = models.ManyToManyField('self', symmetrical=False)
+
+class Lesson(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    content = models.TextField()
+    progress = models.IntegerField(default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class CollaborationSession(models.Model):
+    participants = models.ManyToManyField(User)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    last_modified = models.DateTimeField(auto_now=True)
+
+Backlog:
+Incorporate Webhooks to allow collaboration in a textbox in the webapp.
+May Google OAUTH look nice.
+Transition from using an external website for code correctness to a checker in our webpage.
+
+

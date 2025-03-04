@@ -1,0 +1,6 @@
+django
+daphne
+channels
+pillow
+social-auth-app-django
+django-allauth
