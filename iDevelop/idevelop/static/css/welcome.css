@@ -1,0 +1,145 @@
+/* Resetting default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  padding: 15px 30px;
+  color: #fff;
+  position: fixed; /* Makes the navbar fixed at the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensures the navbar spans the entire width */
+  z-index: 1000; /* Ensures it stays on top of other content */
+}
+  
+  /* Logo Styling */
+  .logo img {
+    height: 30px;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: #ddd;
+  }
+  
+  /* Right-side actions (Login, Contact, CTA Button) */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .nav-actions .login,
+  .nav-actions .contact {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .nav-actions .login:hover,
+  .nav-actions .contact:hover {
+    color: #ddd;
+  }
+  
+  /* CTA Button */
+  .cta-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Mobile Responsive Design */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+  
+    .nav-actions {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0d1117; /* Dark theme */
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Hero Section Styling */
+  .hero {
+    width: 80%;
+    max-width: 800px;
+    padding: 50px;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    color: #58a6ff; /* Light blue text for emphasis */
+  }
+  
+  .hero p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    color: #c9d1d9; /* Lighter text for secondary content */
+  }
+  
+  /* Call-to-Action Button Styling */
+  .cta-button {
+    background-color: #0a907c; /* Green CTA button */
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+

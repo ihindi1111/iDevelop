@@ -1,0 +1,69 @@
+/* Set the background to black */
+body {
+  background-color: #000000;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Container for centering the login/signup box */
+.container {
+  color : #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Styling for login and signup box */
+.login-box, .signup-box {
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+/* Style headings */
+.login-box h3, .signup-box h3 {
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Style Google button image */
+img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+/* Back to welcome page link */
+.back-link a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}
+
+/* Sign up/login links */
+.login-box p, .signup-box p {
+  color: #ffffff;
+  margin-top: 15px;
+}
+
+a {
+  color: #4285F4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

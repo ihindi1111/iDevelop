@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - iDevelop{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <h1>Welcome to iDevelop</h1>
+        <p>
+            Thank you to Mario Cruz, Itamar Hindi, Andrei Da Silva, Jeff, Austin, and the wonderful TA's that have helped us
+            learn all of this material.
+        </p>
+        <div class="back-button-container">
+            <a href="{% url 'post-welcome' %}" class="back-button">Go Back</a>
+        </div>
+    </main>
+</div>
+{% endblock %}

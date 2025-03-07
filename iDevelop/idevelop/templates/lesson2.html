@@ -1,0 +1,375 @@
+{% extends "base.html" %}
+{% block title %}Lesson 1 - HTML{% endblock %}
+
+{% block content %}
+<body style="margin-left: 10px;">
+
+    <div class="lesson-content">
+        <h1>`</h1>
+        <h2>` </h2>
+        <h1>Introduction to CSS</h1>
+    
+        <!-- CSS Section -->
+        <h2>What is CSS?</h2>
+        <p>CSS stands for <strong>Cascading Style Sheets</strong>. While HTML structures a webpage, CSS styles it, controlling the appearance of HTML elements, including layout, colors, fonts, and spacing. If HTML is the skeleton, CSS is the "clothing" that makes a webpage visually appealing.</p>
+        
+        <h3>What CSS Does:</h3>
+        <ul>
+            <li>Styles HTML elements with color, fonts, and sizes.</li>
+            <li>Controls layout, such as aligning items or setting spacing.</li>
+            <li>Makes pages responsive and interactive.</li>
+        </ul>
+    
+        <!-- Editable HTML Code Example with Line Numbers -->
+        <h3>Example of CSS Code in an HTML file:</h3>
+        <div class="code-container">
+            <div class="code-box">
+                <div class="line-numbers">
+                    <pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16</pre>
+                </div>
+                <textarea id = "code-input" class="code-input" rows="16" spellcheck="false">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello, World!</title>
+</head>
+<style>
+    .title {
+        color: blue;
+        font-family: monospace;
+    }
+    .currentTime{
+        color : magenta;
+    }
+    @media (max-width: 768px) {
+    /* Adjust navbar for smaller screens */
+    #id_header_div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links,
+    .nav-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    /* Stack the container elements */
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar-left,
+    .main-content,
+    .sidebar-right {
+        width: 100%;
+    }
+}
+</style>
+<body>
+    <h1 class="title">Hello, World!</h1>
+    <p id="currentTime"></p>
+    <script src="script.js"></script>
+</body>
+</html>
+                </textarea>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <button onclick="openInJSFiddle()" style="padding: 10px 20px; font-size: 16px;">
+                Compile
+            </button>
+        </div>
+
+        <script>
+            function openInJSFiddle() {
+                console.log("Button clicked - attempting to open JSFiddle"); // Debug log
+                // Get the HTML code from the textarea
+                const htmlCode = document.getElementById("code-input").value;
+                
+                // Debugging: Log the HTML code to ensure it is being captured
+                console.log("HTML Code:", htmlCode);
+
+                // Create a form to submit to JSFiddle
+                const form = document.createElement("form");
+                form.action = "https://jsfiddle.net/api/post/library/pure/";
+                form.method = "POST";
+                form.target = "_blank"; // Open in a new tab
+
+                // Add HTML content to the form
+                const htmlField = document.createElement("input");
+                htmlField.type = "hidden";
+                htmlField.name = "html";
+                htmlField.value = htmlCode;
+                form.appendChild(htmlField);
+
+                // Add empty CSS and JS fields
+                const cssField = document.createElement("input");
+                cssField.type = "hidden";
+                cssField.name = "css";
+                cssField.value = ""; // Optional custom CSS
+                form.appendChild(cssField);
+
+                const jsField = document.createElement("input");
+                jsField.type = "hidden";
+                jsField.name = "js";
+                jsField.value = ""; // Optional custom JS
+                form.appendChild(jsField);
+
+                // Debug log before submitting
+                console.log("Form ready to submit to JSFiddle");
+
+                // Append form to the body and submit
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form); // Clean up the form after submission
+            }
+        </script>
+        <h4>CSS Elements Explained:</h4>
+        <ul>
+            <li>CSS allows us to grab specific parts of our html file.</li>
+            <li>When we give an item an id or class we can single it out in the CSS.</li>
+            <li>Once we single out the element we can give it style such as color!</li>
+            <li style = "color:red;">.{name of class} {color: red;} is how we style a specific class (devider)</li>
+            <li style = "color:blue;">#{name of id} {color : blue ;} is how we style a specific id</li>
+            <li>@media is how we give a responsive design!</li>
+        </ul>
+
+        <style>
+            .code-box {
+                display: flex;
+                font-family: monospace;
+            }
+            .line-numbers {
+                text-align: right;
+                padding-right: 10px;
+                color: gray;
+                user-select: none;
+                line-height: 20px; /* Fixed line height to ensure alignment */
+                padding-top: 2px; /* Adjust as necessary for vertical alignment */
+                overflow: hidden;
+            }
+            .line-numbers pre {
+                margin: 0;
+                padding: 0;
+            }
+            .code-input {
+                width: 600px;
+                margin: 0;
+                padding: 0;
+                resize: none; /* Disable resizing to maintain alignment */
+                border: 1px solid #ccc;
+                border-left: none;
+                font-family: monospace;
+                line-height: 20px; /* Match line-height with .line-numbers */
+                overflow-y: hidden; /* Prevents scroll bar from affecting alignment */
+            }
+            .code-container {
+                display: inline-block;
+                background-color: #f8f8f8;
+                border: 1px solid #ccc;
+            }
+        </style>
+    
+        <!-- CSS Section -->
+        <h2>Why CSS?</h2>
+        <p>CSS makes our html <strong>stand out</strong>. When you make a website
+        you want to make it as friendly as possible and CSS helps with that! 
+        When you pair it with tailwind or react for example you can make extremely
+        user friendly resources that run smoothly</p>
+        
+    
+        <!-- CSS Code Example -->
+        <h3>Example of CSS Code:</h3>
+        <div class="code">
+            body {<br>
+            &nbsp;&nbsp;background-color: #f0f0f0;<br>
+            &nbsp;&nbsp;font-family: Arial, sans-serif;<br>
+            }<br>
+            h1 {<br>
+            &nbsp;&nbsp;color: #4CAF50;<br>
+            &nbsp;&nbsp;text-align: center;<br>
+            }
+        </div>
+    
+    </div>
+
+    <h3>Practice Question 1:</h3>
+    <div class="question">
+        <p><strong>Question:</strong>Write an inline CSS style to make a paragraph text bold and italic.</p>
+        <form onsubmit = "return checkAnswer1;" method="post" action="{% url 'submit_answer_2' 2 1 %}">
+            {% csrf_token %}
+            <input type="text" name="answer" id="answer">
+            <button id = "submit1" type="submit">Submit</button>
+            <p id="feedback1"></p> <!-- Feedback message -->
+        </form>
+        <label for="answer" style = "color: green">{{ answers.2.1 }}</label>
+    </div>
+
+    <h3>Practice Question 2:</h3>
+    <div class="question">
+        <p><strong>Question:</strong> Create a CSS class that makes text blue, italic, and Arial and apply it to a heading.</p>
+        <form onsubmit = "return checkAnswer2;" method="post" action="{% url 'submit_answer_2' 2 2 %}">
+            {% csrf_token %}
+            <input type="text" name="answer" id="answer">
+            <button id = "submit2" type="submit">Submit</button>
+            <p id="feedback2"></p> <!-- Feedback message -->
+        </form>
+        <label for="answer" style = "color: green">{{ answers.2.2 }}</label>
+    </div>
+
+    <script>
+        window.onload = saveCode;
+        window.setInterval(saveCode, 2000);
+        function checkAnswer1() {
+            const answer1 = document.getElementById("answer1").value.trim();
+            const feedback1 = document.getElementById("feedback1");
+            const submitButton1 = document.getElementById("submit1");
+
+
+            // Correct answer for inline CSS bold and italic
+            const correctAnswer1 = '<p style="font-weight: bold; font-style: italic;>';
+
+            if (answer1 === correctAnswer1) {
+                feedback1.innerHTML = "Correct! The text is bold and italic.";
+                feedback1.style.color = "green";
+                submitButton1.disabled = true;
+                document.getElementById("answer1").disabled = true; // Disable input box
+            } else {
+                feedback1.innerHTML = "Incorrect. Try using both <strong>font-weight: bold</strong> and <strong>font-style: italic</strong> in the style.";
+                feedback1.style.color = "red";
+            }
+
+            // Prevent form submission to show feedback
+            return false;
+        }
+
+        function checkAnswer2() {
+            const answer2 = document.getElementById("answer2").value.trim();
+            const feedback2 = document.getElementById("feedback2");
+            const submitButton2 = document.getElementById("submit2");
+
+            // Correct answer for CSS class red and bold
+            const correctAnswer2 = '.red-bold { color: red; font-weight: bold; font-family: Arial}';
+
+            if (answer2 === correctAnswer2) {
+                feedback2.innerHTML = "Correct! The text will be red and bold.";
+                feedback2.style.color = "green";
+                submitButton2.disabled = true;
+                document.getElementById("answer2").disabled = true; // Disable input box
+            } else {
+                feedback2.innerHTML = "Incorrect. Make sure to define the class with <strong>color: red</strong> and <strong>font-weight: bold</strong>.";
+                feedback2.style.color = "red";
+            }
+
+            // Prevent form submission to show feedback
+            return false;
+        }
+
+        function saveCode() {
+            const code = $('#codeInput3').val();  // Get the current value of the textarea
+            $.ajax({
+                url: '{% url "lesson2" %}',  // URL to the Django view
+                type: 'POST',
+                data: {
+                    'code': code,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    console.log('Code saved!');
+                    $('#feedback3').text('Code saved successfully').fadeIn();
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error saving code:', error);
+                    $('#feedback3').text('Error saving code').fadeIn();
+                }
+            });
+        };
+
+        function openInCompiler() {
+            const htmlCode = document.getElementById("codeInput3").value;
+
+            // Create a form to submit to JSFiddle (or CodePen)
+            const form = document.createElement("form");
+            form.action = "https://jsfiddle.net/api/post/library/pure/"; // Use CodePen's URL if needed
+            form.method = "POST";
+            form.target = "_blank"; // Open in a new tab
+
+            // Add HTML content to the form
+            const htmlField = document.createElement("input");
+            htmlField.type = "hidden";
+            htmlField.name = "html";
+            htmlField.value = htmlCode;
+            form.appendChild(htmlField);
+
+            // Add empty CSS and JS fields if needed
+            const cssField = document.createElement("input");
+            cssField.type = "hidden";
+            cssField.name = "css";
+            cssField.value = ""; // Optional custom CSS
+            form.appendChild(cssField);
+
+            const jsField = document.createElement("input");
+            jsField.type = "hidden";
+            jsField.name = "js";
+            jsField.value = ""; // Optional custom JS
+            form.appendChild(jsField);
+
+            // Append form to the body and submit
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form); // Clean up the form after submission
+        }
+
+        function checkAnswer3() {
+        const userCode = document.getElementById("codeInput3").value.trim();
+        const feedback3 = document.getElementById("feedback3");
+        const submitButton3 = document.getElementById("submit3");
+
+        // Define the correct answer template
+        const correctAnswer3 = `
+@media (max-width: 500px) {
+    .container {
+        width: 75%;
+    }
+}`;
+        // Check if the user's code matches the correct answer
+        if (userCode === correctAnswer3) {
+            feedback3.innerHTML = "Correct! You created the CSS as specified!";
+            feedback3.style.color = "green";
+            submitButton3.disabled = true; // Disable the submit button
+            document.getElementById("codeInput3").disabled = true; // Disable the code input
+        } else {
+            feedback3.innerHTML = "Incorrect. Make sure you create the @media and container!.";
+            feedback3.style.color = "red";
+        }
+    }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <h3>Practice:</h3>
+    <div class="question">
+        <p><strong>Question:</strong> Create a CSS block for an @media responsive design with a width of 500 and a container with width of 75%</p>
+    </div>
+
+    <div class="code-container">
+        <div class="code-box">
+            <div class="line-numbers">
+                <pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16</pre>
+            </div>
+            <textarea id="codeInput3" class="code-input" rows="16" spellcheck="false">{{ saved_code }}</textarea>
+        </div>
+    </div>
+    
+    <!-- Compiler and Submit Buttons -->
+    <div style="margin-top: 20px;">
+        <button onclick="openInCompiler()" style="padding: 10px 20px; font-size: 16px;">Compile</button>
+        <!-- <button onclick="checkAnswer3()" id="submit3" style="padding: 10px 20px; font-size: 16px;">Submit</button> -->
+        <p id="feedback3"></p> <!-- Feedback message -->
+    </div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - iDevelop{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Left Sidebar with Dropdown Menu -->
+    <aside class="sidebar-left">
+        <h2>Lessons</h2>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="{% url 'lesson1' %}">Lesson 1</a>
+                <p>Introduction to HTML</p>
+            </li>
+            <li>
+                <a href="{% url 'lesson2' %}">Lesson 2</a>
+                <p>Basics of CSS</p>
+            </li>
+            <li>
+                <a href="{% url 'lesson3' %}">Lesson 3</a>
+                <p>Getting Started with JavaScript</p>
+            </li>
+            <li>
+                <a href="{% if owned_box_ID %}{% url 'collab' owned_box_ID %}{% endif %}">Collab</a>
+                <p>Collab On An Exercise With Friends</p>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <h1>Welcome to iDevelop</h1>
+        <p>
+            iDevelop is a collaborative platform where you can learn, code, and collaborate in real-time.
+            Enhance your skills in HTML, CSS, and JavaScript while working together with friends and tracking your progress.
+        </p>
+
+    </main>
+
+    <!-- Right Sidebar with Following Users -->
+    <aside class="sidebar-right">
+        <h2>Following</h2>
+        <ul class="following-list">
+            {% for user, collab_box_id in user_collab_dict.items %}
+                {% if collab_box_id %}
+                    <a href="{% url 'collab' collab_box_id %}">{{ user.user.email }}</a>
+                {% else %}
+                    <li>{{ user.user.email }} has no collab boxes available.</li>
+                {% endif %}
+            {% empty %}
+                <li>You are not following anyone yet.</li>
+            {% endfor %}
+        </ul>
+    </aside>
+</div>
+{% endblock %}

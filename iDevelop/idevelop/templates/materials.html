@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - iDevelop{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <h1>HTML Dog</h1>
+        <p>
+            Some helpful lessons on HTML, CSS, and JavaScript that helped inspire our project.
+        </p>
+        
+        <!-- Embedded Webpage -->
+        <div class="embed-container">
+            <iframe 
+                src="https://www.htmldog.com/" 
+                width="100%" 
+                height="600" 
+                frameborder="0" 
+                style="border: 1px solid #ccc;"
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <!-- Back Button -->
+        <div class="back-button-container">
+            <a href="{% url 'post-welcome' %}" class="back-button">Go Back</a>
+        </div>
+    </main>
+</div>
+{% endblock %}

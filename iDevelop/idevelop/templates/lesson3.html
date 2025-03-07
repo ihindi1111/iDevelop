@@ -1,0 +1,343 @@
+{% extends "base.html" %}
+{% block title %}Lesson 1 - HTML{% endblock %}
+
+{% block content %}
+<body style="margin-left: 10px;">
+
+    <div class="lesson-content">
+        <h1>`</h1>
+        <h2>` </h2>
+        <h1>Getting Started With Javascript</h1>
+    
+        <!-- CSS Section -->
+        <h2>What is JS?</h2>
+        <p>Javascript is a programming language that 99% of websites use. JS is
+            the backbone of client side webpage behavior. Web browsers have dedicated javascript
+            engine that executes the code.
+        </p>
+        
+        <h3>What JS Does:</h3>
+        <ul>
+            <li>JS can change HTML content</li>
+            <li>JS can change HTML styles (CSS)</li>
+            <li>JS can show and hide HTML values</li>
+            <li>JS can change HTML attribute values</li>
+        </ul>
+    
+        <!-- Editable HTML Code Example with Line Numbers -->
+        <h3>Example of JS Code in an HTML file:</h3>
+        <div class="code-container">
+            <div class="code-box">
+                <div class="line-numbers">
+                    <pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16</pre>
+                </div>
+                <textarea id = "code-input" class="code-input" rows="16" spellcheck="false">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello, World!</title>
+</head>
+<body>
+    <h1 class="title">Hello, World!</h1>
+    <p id="currentTime"></p>
+    <button onclick="document.getElementById('title').innerHTML = 'Goodbye World'">Say Goodbye</button>
+</body>
+</html>
+                </textarea>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <button onclick="openInJSFiddle()" style="padding: 10px 20px; font-size: 16px;">
+                Compile
+            </button>
+        </div>
+
+        <script>
+            function openInJSFiddle() {
+                console.log("Button clicked - attempting to open JSFiddle"); // Debug log
+                // Get the HTML code from the textarea
+                const htmlCode = document.getElementById("code-input").value;
+                
+                // Debugging: Log the HTML code to ensure it is being captured
+                console.log("HTML Code:", htmlCode);
+
+                // Create a form to submit to JSFiddle
+                const form = document.createElement("form");
+                form.action = "https://jsfiddle.net/api/post/library/pure/";
+                form.method = "POST";
+                form.target = "_blank"; // Open in a new tab
+
+                // Add HTML content to the form
+                const htmlField = document.createElement("input");
+                htmlField.type = "hidden";
+                htmlField.name = "html";
+                htmlField.value = htmlCode;
+                form.appendChild(htmlField);
+
+                // Add empty CSS and JS fields
+                const cssField = document.createElement("input");
+                cssField.type = "hidden";
+                cssField.name = "css";
+                cssField.value = ""; // Optional custom CSS
+                form.appendChild(cssField);
+
+                const jsField = document.createElement("input");
+                jsField.type = "hidden";
+                jsField.name = "js";
+                jsField.value = ""; // Optional custom JS
+                form.appendChild(jsField);
+
+                // Debug log before submitting
+                console.log("Form ready to submit to JSFiddle");
+
+                // Append form to the body and submit
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form); // Clean up the form after submission
+            }
+        </script>
+        <h4>JS Elements Explained:</h4>
+        <ul>
+            <li><strong>Variables!</strong> Stored as such: var x = 5;
+                var y = 6;
+                var z = x + y;</li>
+            <li><strong>Numbers!</strong> There is one datatype for all numbers: 
+                var x = 3.14;
+                var y = 3;</li>
+            <li><strong>Strings!</strong> You can use single or double quotes! 
+                var carname = "Volvo XC60";
+                var carname = 'Volvo XC60';</li>
+            <li><strong>Objects</strong> are like python dictionaries they store multiple variables with their values: 
+                var car = {type:"Fiat", model:"500", color:"white"};</li>
+            <li><strong>Arrays</strong> store multiple values! var cars = ["Saab", "Volvo", "BMW"];</li>
+            <li><strong>Functions</strong> execute a particular task. 
+                function myFunction(p1, p2) {
+                    return p1 * p2;
+                }</li>
+        </ul>
+
+        <style>
+            .code-box {
+                display: flex;
+                font-family: monospace;
+            }
+            .line-numbers {
+                text-align: right;
+                padding-right: 10px;
+                color: gray;
+                user-select: none;
+                line-height: 20px; /* Fixed line height to ensure alignment */
+                padding-top: 2px; /* Adjust as necessary for vertical alignment */
+                overflow: hidden;
+            }
+            .line-numbers pre {
+                margin: 0;
+                padding: 0;
+            }
+            .code-input {
+                width: 600px;
+                margin: 0;
+                padding: 0;
+                resize: none; /* Disable resizing to maintain alignment */
+                border: 1px solid #ccc;
+                border-left: none;
+                font-family: monospace;
+                line-height: 20px; /* Match line-height with .line-numbers */
+                overflow-y: hidden; /* Prevents scroll bar from affecting alignment */
+            }
+            .code-container {
+                display: inline-block;
+                background-color: #f8f8f8;
+                border: 1px solid #ccc;
+            }
+        </style>
+    
+        <!-- JS Section -->
+        <h2>Why JS?</h2>
+        <p>JS makes our HTML interactive and perform actions that HTML cannot do. 
+        JS allows us to for example implement automatic updates to feeds or friend
+        requests. JS is an exciting language that improves the user experience through
+        interactive code.</p>
+    
+    </div>
+
+
+
+    <h3>Practice Question 1:</h3>
+    <div class="question">
+        <p><strong>Question:</strong>Write JS to change the text of an element with id phrase to "Hey Everyone"</p>
+        <form method="post" action="{% url 'submit_answer_3' 3 1 %}">
+            {% csrf_token %}
+            <input type="text" name="answer" id="answer">
+            <button id = "submit1" type="submit">Submit</button>
+            <p id="feedback1"></p>
+        </form>
+        <label for="answer" style = "color: green">{{ answers.3.1 }}</label>
+    </div>
+
+    <h3>Practice Question 2:</h3>
+    <div class="question">
+        <p><strong>Question:</strong> Write some JS to make an element with the id tree dissapear</p>
+        <form id = 2 method="post" action="{% url 'submit_answer_3' 3 2 %}">
+            {% csrf_token %}
+            <input type="text" name="answer" id="answer">
+            <button id = "submit2" type="submit">Submit</button>
+            <p id="feedback2"></p>
+        </form>
+        <label for="answer" style = "color: green">{{ answers.3.2 }}</label>
+    </div>
+
+    <script>
+        window.onload = saveCode;
+        window.setInterval(saveCode, 2000);
+        function checkAnswer1() {
+            const answer1 = document.getElementById("answer1").value.trim();
+            const feedback1 = document.getElementById("feedback1");
+            const submitButton1 = document.getElementById("submit1");
+
+
+            // Correct answer for inline CSS bold and italic
+            const correctAnswer1 = 'document.getElementById("phrase").innerHTML= "Hey Everyone"';
+
+            if (answer1 === correctAnswer1) {
+                feedback1.innerHTML = "Correct! The text is bold and italic.";
+                feedback1.style.color = "green";
+                submitButton1.disabled = true;
+                document.getElementById("answer1").disabled = true; // Disable input box
+            } else {
+                feedback1.innerHTML = "Incorrect. Try using both <strong>font-weight: bold</strong> and <strong>font-style: italic</strong> in the style.";
+                feedback1.style.color = "red";
+            }
+
+            // Prevent form submission to show feedback
+            return false;
+        }
+
+        function checkAnswer2() {
+            const answer2 = document.getElementById("answer2").value.trim();
+            const feedback2 = document.getElementById("feedback2");
+            const submitButton2 = document.getElementById("submit2");
+
+            // Correct answer for CSS class red and bold
+            const correctAnswer2 = 'document.getElementById("tree").style.display = none';
+
+            if (answer2 === correctAnswer2) {
+                feedback2.innerHTML = "Correct! The text will be red and bold.";
+                feedback2.style.color = "green";
+                submitButton2.disabled = true;
+                document.getElementById("answer2").disabled = true; // Disable input box
+            } else {
+                feedback2.innerHTML = "Incorrect. Make sure to define the class with <strong>color: red</strong> and <strong>font-weight: bold</strong>.";
+                feedback2.style.color = "red";
+            }
+
+            // Prevent form submission to show feedback
+            return false;
+        }
+
+        
+        function saveCode() {
+            const code = $('#codeInput3').val();  // Get the current value of the textarea
+            $.ajax({
+                url: '{% url "lesson3" %}',  // URL to the Django view
+                type: 'POST',
+                data: {
+                    'code': code,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    console.log('Code saved!');
+                    $('#feedback3').text('Code saved successfully').fadeIn();
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error saving code:', error);
+                    $('#feedback3').text('Error saving code').fadeIn();
+                }
+            });
+        };
+
+        function openInCompiler() {
+            const htmlCode = document.getElementById("codeInput3").value;
+
+            // Create a form to submit to JSFiddle (or CodePen)
+            const form = document.createElement("form");
+            form.action = "https://jsfiddle.net/api/post/library/pure/"; // Use CodePen's URL if needed
+            form.method = "POST";
+            form.target = "_blank"; // Open in a new tab
+
+            // Add HTML content to the form
+            const htmlField = document.createElement("input");
+            htmlField.type = "hidden";
+            htmlField.name = "html";
+            htmlField.value = htmlCode;
+            form.appendChild(htmlField);
+
+            // Add empty CSS and JS fields if needed
+            const cssField = document.createElement("input");
+            cssField.type = "hidden";
+            cssField.name = "css";
+            cssField.value = ""; // Optional custom CSS
+            form.appendChild(cssField);
+
+            const jsField = document.createElement("input");
+            jsField.type = "hidden";
+            jsField.name = "js";
+            jsField.value = ""; // Optional custom JS
+            form.appendChild(jsField);
+
+            // Append form to the body and submit
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form); // Clean up the form after submission
+        }
+
+        function checkAnswer3() {
+        const userCode = document.getElementById("codeInput3").value.trim();
+        const feedback3 = document.getElementById("feedback3");
+        const submitButton3 = document.getElementById("submit3");
+
+        // Define the correct answer template
+        const correctAnswer3 = `
+@media (max-width: 500px) {
+    .container {
+        width: 75%;
+    }
+}`;
+        // Check if the user's code matches the correct answer
+        if (userCode === correctAnswer3) {
+            feedback3.innerHTML = "Correct! You created the CSS as specified!";
+            feedback3.style.color = "green";
+            submitButton3.disabled = true; // Disable the submit button
+            document.getElementById("codeInput3").disabled = true; // Disable the code input
+        } else {
+            feedback3.innerHTML = "Incorrect. Make sure you create the @media and container!.";
+            feedback3.style.color = "red";
+        }
+    }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <h3>Practice:</h3>
+    <div class="question">
+        <p><strong>Question:</strong> Create some HTML and Javascript where you update an element between 2 different colors by clicking a button.</p>
+    </div>
+
+    <div class="code-container">
+        <div class="code-box">
+            <div class="line-numbers">
+                <pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16</pre>
+            </div>
+            <textarea id="codeInput3" class="code-input" rows="16" spellcheck="false">{{ saved_code }}</textarea>
+        </div>
+    </div>
+    
+    <!-- Compiler and Submit Buttons -->
+    <div style="margin-top: 20px;">
+        <button onclick="openInCompiler()" style="padding: 10px 20px; font-size: 16px;">Compile</button>
+        <!-- <button onclick="checkAnswer3()" id="submit3" style="padding: 10px 20px; font-size: 16px;">Submit</button> -->
+        <p id="feedback3"></p> <!-- Feedback message -->
+    </div>
+
+</body>
+{% endblock %}

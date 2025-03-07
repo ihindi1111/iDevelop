@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Header styling */
+#id_header_div {
+    background-color: #336699;
+    padding: 20px;
+    color: white;
+    text-align: left;
+}
+
+#id_site_name {
+    font-size: 2em;
+    margin: 0;
+}
+
+#id_login_link {
+    color: white;
+    background-color: #336699;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#id_login_link:hover {
+    background-color: #284d7a;
+}
+
+/* Page name styling */
+#id_page_name {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* Form container styling */
+form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-size: 18px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+#id_register_button {
+    width: 100%;
+    background-color: #336699;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#id_register_button:hover {
+    background-color: #284d7a;
+}
+
+.errorlist {
+    color: red;
+    font-size: 0.9em;
+}

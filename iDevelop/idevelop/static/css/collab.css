@@ -1,0 +1,55 @@
+textarea {
+    width: 100%;
+    min-height: 50px; /* Minimum height */
+    max-height: 500px; /* Optional: Prevent excessive expansion */
+    overflow: hidden; /* Hide the scrollbar */
+    /*resize: none; /* Disable manual resizing */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width/height */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+/* Commented-out .main-content block with proper syntax */
+/* 
+.main-content {
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    height: 100%; 
+    text-align: center;
+} 
+*/
+
+.container {
+    grid-template-columns: 300px 1fr; /* Sidebar (300px) and main content (flexible width) */
+    height: 100vh;
+    overflow: hidden;
+}
+
+.resizable-sidebar {
+    background-color: #FFFFFF;
+    border-right: 2px solid #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: horizontal;
+    overflow: auto;
+    /* cursor: ew-resize; */
+}
+
+.main-content {
+    width: 60%;
+    background-color: #ffffff;
+    color: #000000;
+    flex-grow: 1;
+
+
+    display: flex; /* Enable Flexbox for alignment */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Align content to the top */
+    height: 100%; /* Full height */
+    text-align: center; /* Center text */
+    padding: 20px; /* Space around content */
+    overflow: auto; /* Enable scrolling if content overflows */
+}

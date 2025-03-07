@@ -1,0 +1,116 @@
+
+/* Container for Main Content and Sidebars */
+.container {
+    display: flex;
+    height: calc(100vh - 80px); /* Full viewport height minus navbar height */
+    /*margin-top: 80px; /* Adjust for fixed navbar height */
+}
+
+/* Left Sidebar */
+.sidebar-left {
+    width: 20%;
+    background-color: #0d1117;
+    padding: 20px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows sidebar to grow to full height */
+    justify-content: flex-start;
+}
+
+.sidebar-left h2,
+.sidebar-left p {
+    margin-bottom: 15px;
+    color: white;
+}
+
+.dropdown-menu {
+    list-style: none;
+}
+
+.dropdown-menu li {
+    margin-bottom: 15px;
+}
+
+.dropdown-menu a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dropdown-menu p {
+    color: #c9d1d9;
+    margin-top: 5px;
+}
+
+/* Main Content Area */
+.main-content {
+    width: 60%;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows main content to grow to full height */
+    justify-content: flex-start;
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+}
+
+/* Right Sidebar */
+.sidebar-right {
+    width: 20%;
+    background-color: #0a907c;
+    padding: 20px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows sidebar to grow to full height */
+    justify-content: flex-start;
+}
+
+.sidebar-right h2,
+.sidebar-right p {
+    margin-bottom: 15px;
+    color: white;
+}
+
+.following-list {
+    list-style: none;
+}
+
+.following-list li {
+    margin-bottom: 10px;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Adjust navbar for smaller screens */
+    #id_header_div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links,
+    .nav-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    /* Stack the container elements */
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar-left,
+    .main-content,
+    .sidebar-right {
+        width: 100%;
+    }
+}

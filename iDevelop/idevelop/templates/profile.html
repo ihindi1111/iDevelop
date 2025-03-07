@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - iDevelop{% endblock %}
+
+{% block content %}
+    <h1 id="id_page_name"><a>{{ user.get_full_name|default:user.username }}'s Profile</a></h1>
+    <div class="profile-container">
+        <div>
+            <script>const url =  "{{ form.profile_picture.value }}"</script>
+            {% if form.profile_picture.value %}
+                <img id="id_user_picture"  class = "profile_picture" src="{{ form.profile_picture.value.url }}" alt="Profile Picture" width="150" height="150">
+            {% else %}
+                <img  id="id_user_picture"  class = "profile_picture" src="{% static 'images/anonymous.webp' %}" alt="Default Profile Picture" width="150" height="150">
+            {% endif %}
+        </div>
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'profile' user.id%}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="id_bio_input_text">Bio:</label>
+                <textarea id="id_bio_input_text" name="bio" rows="4" cols="50">{{ form.bio.value }}</textarea>
+            </div>
+            {% if is_you %}
+                <div class="form-group">
+                    <label for="id_profile_picture">Upload Profile Picture:</label>
+                    <input id="id_profile_picture" type="file" name="profile_picture">
+                </div>
+                <button id = "id_update_profile_button" type="submit">Update Profile</button>
+            {% endif %}
+        </form>
+        <div> 
+            {% if is_friend %}
+                {%if is_permitted%}
+                <form method="post" action="{% url 'prevent-edits' profile_user.id%}">
+                    {% csrf_token %}
+                    <button id="id_update_profile_button" type="submit">Remove Edit Permissions</button>
+                </form>
+                {% else %}
+                <form method="post" action="{% url 'permit-edits' profile_user.id%}">
+                    {% csrf_token %}
+                    <button id="id_update_profile_button" type="submit">Add Edit Permission</button>
+                </form>
+                {% endif %}
+            {% endif %}
+        </div>
+        <h2>Following:</h2>
+        <ul>
+            {% if friends %}
+                {% for user_followed in friends %}
+                    <li>
+                        <a id = "id_profile_link_{{user.id}}" href="{% url 'profile' user_followed.user.id %}">{{ user_followed.user.email }}</a><br> 
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>You are not following anyone yet.</li>
+            {% endif %}
+        </ul>
+    </div>
+    <script>
+        const friends = "{{friend_profiles}}"
+        const biobox = document.getElementById("id_bio_input_text");
+        biobox.readOnly = "{{ is_you }}" !== "True";
+    </script>
+{% endblock %}
