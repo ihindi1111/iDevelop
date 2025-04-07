@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Students{% endblock %}
+
+{% block content %}
+<h1>Students</h1>
+
+<!-- Horizontal container for the top three sections -->
+<div class="students-container">
+    <!-- Friends -->
+    <div class="students-section">
+        <h2>Friends</h2>
+        <ol id="friends-list"></ol>
+    </div>
+
+    <!-- Incoming Friend Requests -->
+    <div class="students-section">
+        <h2>Incoming Friend Requests</h2>
+        <ol id="incoming-requests-list"></ol>
+    </div>
+
+    <!-- Outgoing Friend Requests -->
+    <div class="students-section">
+        <h2>Outgoing Friend Requests</h2>
+        <ol id="outgoing-requests-list"></ol>
+    </div>
+</div>
+
+<!-- Other Students Section -->
+<div class="students-list">
+    <h2>Other Students</h2>
+    <ol id="regular-students-list"></ol>
+</div>
+
+<script>
+    const acceptFriendRequestURL = "{% url 'ajax-accept-friend-request' 0 %}";
+    const cancelFriendRequestURL = "{% url 'ajax-cancel-friend-request' 0 %}";
+    const sendFriendRequestURL = "{% url 'ajax-send-friend-request' 0 %}";
+    const removeFriendURL = "{% url 'ajax-remove-friend' 0 %}";
+    const getListURL = "{% url 'ajax-get-friend-list' %}";
+
+    // Fetch the student stream on page load and update it every 5 seconds
+    window.onload = getFriendStream;
+    window.setInterval(getFriendStream, 500);
+</script>
+
+{% endblock %}

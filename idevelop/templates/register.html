@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" type="text/css">
+    <title>Register - iDevelop</title>
+</head>
+<body>
+    <header class="navbar">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Go Back</a></li>
+          </ul>
+        </nav>
+    </header>
+      
+    <div class="auth-container">
+        <h1>Create an Account</h1>
+        <form method="post" action="{% url 'register-action' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <!-- Display Error Messages -->
+            {% if errors %}
+                <ul class="error-list">
+                    {% for error in errors.values %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <button type="submit" class="btn-primary">Register</button>
+        </form>
+        <p class="auth-link">
+            Already have an account? <a href="{% url 'login-action' %}">Login Here</a>
+        </p>
+    </div>
+</body>
+</html>
